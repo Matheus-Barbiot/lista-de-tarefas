@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+  --bg: #F5F7FA;
+  --surface: #FFFFFF;
+
+  --text-primary: #1F2933;
+  --text-secondary: #6B7280;
+
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+
+  --border: #E5E7EB;
+}
+
+
+header, footer {
+    color: var(--text-primary);
+    text-align: center;
+    padding: 30px;
+    height: 50px;
+    width: 100%;
+}
+
+div#root {
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+main > div.content {
+    background-color: var(--surface);
+    width: 450px;
+    padding: 20px;
+    border-radius: 20px;
+    border: solid var(--border);
+    margin: 20px;
+}
+
+main > div#content-tarefa > form {
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+}
+
+form > label {
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+form > input, textarea {
+    padding: 10px;
+    border: solid 2px var(--border);
+    border-radius: 20px;
+    width: 90%;
+}
+
+form > input:focus, textarea:focus {
+    border: solid 2px var(--primary);
+}
+
+
+form > textarea#description {
+    resize: vertical;
+    height: 100px;
+    padding: 25px;
+}
+
+button {
+    background-color: var(--primary);
+    color: white;
+    padding: 10px;
+    margin: 2px;
+    border: none;
+    border-radius: 25px;
+    height: 40px;
+    min-width: 40px;
+    max-width: 200px;
+}
+
+ul#lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+li.item {
+    background-color: var(--bg);
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+li.item > div#text {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input[type = "checkbox"] {
+    accent-color: var(--primary-hover);
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    border-radius: 25%;
+}

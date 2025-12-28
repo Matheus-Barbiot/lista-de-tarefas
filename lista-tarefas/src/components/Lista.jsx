@@ -15,17 +15,18 @@ function Lista() {
     // Mapeamento dos itens da lista de taregas
     const map = listaAtual.map((item, index) => {
         return (
-            <li key={index}>
-
+            <li key={index} class='item'>
+                <div id="text">
+                    <input
+                    className="checkbox"
+                    type="checkbox" 
+                    checked={item.completed} 
+                    onChange={(e) => updateItem(index, "completed", e.target.checked)} />
+                    {item.title}
+                </div>
                 <div>
-                    <div>
-                        <input type="checkbox" checked={item.completed} onChange={(e) => updateItem(index, "completed", e.target.checked)}></input>{item.title}
-                    </div>
-                    <div>
-                        <button onClick={() => setRender(String(index))}>editar</button>
-                        <button onClick={() => removeItem(index)}>apagar</button>
-                    </div>
-                    
+                    <button onClick={() => setRender(String(index))}>...</button>
+                    <button onClick={() => removeItem(index)}>X</button>
                 </div>
             </li>
         )
@@ -52,25 +53,23 @@ function Lista() {
 
         return (
             <>
-                <button onClick={() => setRender("home")}>back</button>
-
+            <h2>Editando tarefa...</h2>
+            <form>
+                <label htmlFor="title">Titulo</label>
                 <input
+                    id="title"
                     type="text"
                     value={item.title}
                     onChange={(e) => updateItem(n, "title", e.target.value)}>
                 </input>
-
-                <input
-                    type="text"
+                <label htmlFor="description">Descrição</label>
+                <textarea
+                    id='description'
                     value={item.description}
                     onChange={(e) => updateItem(n, "description", e.target.value)}>
-                </input>
-
-                <input
-                    type="checkbox"
-                    checked={item.completed}
-                    onChange={(e) => updateItem(n, "completed", e.target.checked)}>
-                </input>
+                </textarea>
+            </form>
+                
             </>
         )
 
@@ -80,19 +79,20 @@ function Lista() {
     if (render !== "home") {
         return (
             <>
-            <div id='tarefa'>
+            <div id='content-tarefa' class='content'>
                 {pageItem(Number(render))}
             </div>
+            <button onClick={() => setRender("home")}>Voltar</button>
             </>
         )
         
     } else {
         return (
             <>
-                <div id="lista">
-                    <ul>{map}</ul>
+                <div id="content-lista" class='content'>
+                    <ul id="lista">{map}</ul>
                 </div>
-                <button onClick={addItem}>adicionar</button>
+                <button onClick={addItem}>Criar Tarefa</button>
             </>
         )
     }
